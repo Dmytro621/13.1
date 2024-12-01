@@ -1,6 +1,9 @@
-document.getElementById('contactForm').addEventListener('submit', (event) => {
-    event.preventDefault(); 
-    
+const form = document.getElementById('contactForm')
+  
+  form.addEventListener('submit', (event) => {
+  event.preventDefault(); 
+  
+  
   const name = document.getElementById('name').value.trim();
   const message = document.getElementById('message').value.trim();
   const phone = document.getElementById('phone').value.trim();
@@ -33,15 +36,15 @@ document.getElementById('contactForm').addEventListener('submit', (event) => {
   }
 
   if (isValid) {
-    console.log({
-      name,
-      message,
-      phone,
-      email,
-    });
-
     alert('Form submitted successfully!');
+
+    
+  const formData = new FormData(event.target);
+  const values = Object.fromEntries(formData)
+
+    console.log(values);
   }
+
 });
 
 function showError(fieldId, message) {
